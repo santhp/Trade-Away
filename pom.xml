@@ -26,9 +26,9 @@
         <lombok.version>1.16.6</lombok.version>
         <cobertura-plugin.version>2.7</cobertura-plugin.version>
         <coveralls-plugin.version>4.0.0</coveralls-plugin.version>
-        <frontend-plugin.version>0.0.27</frontend-plugin.version>
-        <node.version>v5.7.0</node.version>
-        <npm.version>3.7.1</npm.version>
+        <frontend-plugin.version>1.5</frontend-plugin.version>
+        <node.version>v8.3.0</node.version>
+        <npm.version>5.3.0</npm.version>
     </properties>
 
     <dependencies>
