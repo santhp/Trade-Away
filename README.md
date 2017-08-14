@@ -3,7 +3,7 @@
 ## To run entire application 
 1. Goto project directory
 2. run "mvn spring-boot:run"
-3.access [http://localhost:8090](http://localhost:8090)
+3. access [http://localhost:8090](http://localhost:8090)
 
 ## Dev:
 
