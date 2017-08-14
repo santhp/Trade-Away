@@ -1,0 +1,37 @@
+# Operating System Files
+*.DS_Store
+Thumbs.db
+
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/node
+
+# Build Files #
+bin
+target
+build/
+.gradle
+
+# Node
+src/main/frontend/node_modules
+bundle.js
+npm-debug.log
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+# IntelliJ IDEA Files #
+*.iml
+*.ipr
+*.iws
+*.idea
+
+
+### ESLint ###
+.eslintcache
+
+.DS_Store
