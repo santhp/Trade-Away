@@ -1,4 +1,4 @@
-package com.tw.tradeaway.search;
+package com.tw.tradeaway.controller;
 
 import com.tw.tradeaway.dto.ProductDto;
 import com.tw.tradeaway.entities.Category;
@@ -77,5 +77,4 @@ public class CategoryControllerTest {
                 .andExpect(jsonPath("$[0]", is("Cat1")))
                 .andExpect(jsonPath("$[1]", is("Cat2")));
     }
-
 }

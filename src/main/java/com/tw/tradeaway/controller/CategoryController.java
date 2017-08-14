@@ -1,4 +1,4 @@
-package com.tw.tradeaway.search;
+package com.tw.tradeaway.controller;
 
 import com.tw.tradeaway.dto.ProductDto;
 import com.tw.tradeaway.service.CategoriesService;
