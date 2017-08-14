@@ -1,4 +1,4 @@
-package com.tw.tradeaway.search;
+package com.tw.tradeaway.order;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,28 +11,24 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 @RunWith(SpringRunner.class)
-@WebAppConfiguration
-@SpringBootTest
-public class CategoryControllerTest {
+@        WebAppConfiguration
+@        SpringBootTest
+public class CheckOutControllerTest {
+
     @Autowired
     WebApplicationContext context;
     private MockMvc mockMvc;
-
     @Test
-    public void getCategoryList() throws Exception {
+    public void mustCheckOutAnItemToPlaceOrder() throws Exception {
         System.out.println(context);
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
 
-        mockMvc.perform(get("/category/list")
-                .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("$[0]", is("Cat1")))
-                .andExpect(jsonPath("$[1]", is("Cat2")));
-
+        mockMvc.perform(post("/checkout/")
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful());
     }
 }
