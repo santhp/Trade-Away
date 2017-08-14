@@ -1,4 +1,4 @@
-package com.tw.tradeaway.search;
+package com.tw.tradeaway.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
