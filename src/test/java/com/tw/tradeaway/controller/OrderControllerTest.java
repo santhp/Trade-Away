@@ -1,5 +1,6 @@
-package com.tw.tradeaway.order;
+package com.tw.tradeaway.controller;
 
+import com.google.gson.Gson;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import viewmodel.OrderItem;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -18,17 +20,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @        WebAppConfiguration
 @        SpringBootTest
-public class CheckOutControllerTest {
+public class OrderControllerTest {
 
     @Autowired
     WebApplicationContext context;
     private MockMvc mockMvc;
     @Test
     public void mustCheckOutAnItemToPlaceOrder() throws Exception {
-        System.out.println(context);
+        Gson gson = new Gson();
+
+        OrderItem item = new OrderItem("item001", 1, "deliveryAddress");
+        String orderJson = gson.toJson(item);
+
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
 
-        mockMvc.perform(post("/checkout/")
-                .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful());
+        mockMvc.perform(
+                post("/order")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(orderJson))
+                .andExpect(status().isCreated());
     }
 }
