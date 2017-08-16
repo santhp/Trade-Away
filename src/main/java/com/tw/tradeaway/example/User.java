@@ -6,7 +6,7 @@ package com.tw.tradeaway.example;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Seller")
+@Table(name="example")
 public class User {
 
    @Id
