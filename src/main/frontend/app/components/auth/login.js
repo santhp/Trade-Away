@@ -34,7 +34,7 @@ class Login extends Component {
                         <div className="form-group">
                             <label>Email</label>
                             <Field name="email" className="form-control" component="input" type="text"
-                                   placeholder="Enter email"/>
+                                   placeholder="Enter email" value="s"/>
                         </div>
                         <div className="form-group">
                             <label>Password</label>
@@ -51,8 +51,8 @@ class Login extends Component {
 
 function mapStateToProps(state) {
     return {
-        errorMessage: state.auth.error,
-        message: state.auth.message
+        errorMessage: state.data.error,
+        message: state.data.message
     };
 }
 

@@ -1,5 +1,5 @@
 -- Sample Table for Reference
-CREATE TABLE Seller1(
+CREATE TABLE example(
 id INTEGER NOT NULL,
 name VARCHAR(100) NOT NULL,
 email VARCHAR(100) DEFAULT NULL,

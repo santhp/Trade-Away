@@ -1,11 +1,36 @@
 package com.tw.tradeaway.dto;
 
 public class OrderItemDto {
-    public String getProductId() {
+
+    private int userId;
+    private int ProductId;
+    private int Qty;
+    private String DeliveryAddress;
+
+
+    public OrderItemDto() {
+    }
+
+    public OrderItemDto(int userId, int productId, int qty, String deliveryAddress) {
+        this.userId = userId;
+        ProductId = productId;
+        Qty = qty;
+        DeliveryAddress = deliveryAddress;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getProductId() {
         return ProductId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(int productId) {
         ProductId = productId;
     }
 
@@ -25,18 +50,6 @@ public class OrderItemDto {
         DeliveryAddress = deliveryAddress;
     }
 
-    public String ProductId;
-    public int Qty;
-    public String DeliveryAddress;
-
-    public OrderItemDto() {
-    }
-
-    public OrderItemDto(String productId, int qty, String deliveryAddress) {
-        this.ProductId = productId;
-        this.Qty = qty;
-        this.DeliveryAddress = deliveryAddress;
-    }
 }
 
 
