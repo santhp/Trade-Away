@@ -29,7 +29,7 @@ public class OrderControllerTest {
     public void mustCheckOutAnItemToPlaceOrder() throws Exception {
         Gson gson = new Gson();
 
-        OrderItemDto item = new OrderItemDto("item001", 1, "deliveryAddress");
+        OrderItemDto item = new OrderItemDto(1001, 1, 1,"deliveryAddress");
         String orderJson = gson.toJson(item);
 
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
