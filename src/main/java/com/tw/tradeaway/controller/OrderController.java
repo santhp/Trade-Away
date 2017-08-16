@@ -12,7 +12,7 @@ import java.net.URI;
 public class OrderController {
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "order", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/order", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
 
     public ResponseEntity<?> checkoutToPlaceOrder(@RequestBody OrderItemDto orderItem) {
 

@@ -9,17 +9,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
-    @Column
+    @Column (name = "First_Name", nullable = false)
     String firstName;
-    @Column
+    @Column(name="Last_Name", nullable = false)
     String lastName;
-    @Column
+    @Column(name="Email_ID", nullable = false)
     String emailID;
-    @Column
+    @Column(name="Phone_Number", nullable = false)
     String phoneNumber;
-    @Column
+    @Column(name="Role", nullable = false)
     String role;
-    @Column
+    @Column(name="Address", nullable = false)
     String address;
 
 

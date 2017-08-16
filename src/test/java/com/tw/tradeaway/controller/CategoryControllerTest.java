@@ -42,10 +42,26 @@ public class CategoryControllerTest {
 
     @Test
     public void getCategoryListTest1() throws Exception {
-        mockMvc.perform(get("/category/list")
+       /* mockMvc.perform(get("/category/list")
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful())
+<<<<<<< HEAD
                 .andExpect(jsonPath("$[0]").value(new Category(1, "Electronics")))
                 .andExpect(jsonPath("$[1]").value(new Category(2, "Books")));
+=======
+                .andExpect(jsonPath("$[0]", is("Cat1")))
+                .andExpect(jsonPath("$[1]", is("Cat2")));*/
+    }
+
+    public void getCategoryListTest2() throws Exception {
+
+
+        //TODO
+
+        mockMvc.perform(get("/category/list")
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("$[0]", is("Cat1")))
+                .andExpect(jsonPath("$[1]", is("Cat2")));
+>>>>>>> Order creation success case verified
     }
 
     @Test
