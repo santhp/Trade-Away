@@ -5,8 +5,30 @@ import {Field, reduxForm} from 'redux-form';
 import {loginUser} from '../../actions';
 
 const form = reduxForm({
-    form: 'login'
+    form: 'login',
+    validate,
 });
+
+const renderField = field => (
+    <div>
+        <input className="form-control" {...field.input} />
+        {field.touched && field.error && <div className="error">{field.error}</div>}
+    </div>
+);
+
+function validate(formProps) {
+    const errors = {};
+
+    if (!formProps.email) {
+        errors.email = 'Please enter a email';
+    }
+
+    if (!formProps.password) {
+        errors.password = 'Please enter a password';
+    }
+
+    return errors;
+}
 
 class Login extends Component {
     handleFormSubmit(formProps) {
@@ -30,18 +52,20 @@ class Login extends Component {
             <div>
                 <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                     {this.renderAlert()}
-                    <div className="container">
-                        <div className="form-group">
+                    <div className="row">
+                        <div className="col-md-6">
                             <label>Email</label>
-                            <Field name="email" className="form-control" component="input" type="text"
-                                   placeholder="Enter email" value="s"/>
+                            <Field name="email" className="form-control" component={renderField} type="text"/>
                         </div>
-                        <div className="form-group">
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6">
                             <label>Password</label>
-                            <Field name="password" className="form-control" component="input" type="password"
-                                   placeholder="Enter password"/>
+                            <Field name="password" className="form-control" component={renderField} type="password"/>
                         </div>
-                        <button type="submit" className="btn btn-default">Login</button>
+                    </div>
+                    <div style={{marginTop: 10}}>
+                        <button type="submit" className="btn btn-primary">Login</button>
                     </div>
                 </form>
             </div>

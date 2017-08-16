@@ -11,7 +11,6 @@ import RequireAuth from './components/auth/require-auth';
 export default (
     <Route path="/" component={App}>
         <IndexRoute component={Login} />
-        <Route path="register" component={Register} />
         <Route path="dashboard" component={RequireAuth(Dashboard)} />
 
         <Route path="*" component={NotFoundPage} />
