@@ -15,18 +15,18 @@ public class ProductSellerQuantityMapping {
     int id;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "productId",referencedColumnName = "id")
     private Product product;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "sellerId",referencedColumnName = "id")
     private Seller seller;
 
     @Column
     private int quantity;
 
 
-    public ProductSellerQuantityMapping(int id, Product product, Seller seller, int quantity) {
+    public ProductSellerQuantityMapping(Product product, Seller seller, int quantity) {
         this.product = product;
         this.seller = seller;
         this.quantity = quantity;

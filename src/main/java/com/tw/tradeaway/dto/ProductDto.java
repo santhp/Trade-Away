@@ -11,14 +11,14 @@ public class ProductDto {
     String name;
     String description;
     double price;
-    byte[] image;
+    String imageUrl;
     List<SellerDto> sellerDto;
 
-    public ProductDto(String name, String description, double price, byte[] image, List<SellerDto> sellerDto) {
+    public ProductDto(String name, String description, double price, String imageUrl, List<SellerDto> sellerDto) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.image = image;
+        this.imageUrl = imageUrl;
         this.sellerDto = sellerDto;
     }
 
@@ -46,7 +46,6 @@ public class ProductDto {
         result = 31 * result + (description != null ? description.hashCode() : 0);
         temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + Arrays.hashCode(image);
         result = 31 * result + (sellerDto != null ? sellerDto.hashCode() : 0);
         return result;
     }

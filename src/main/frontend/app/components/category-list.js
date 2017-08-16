@@ -16,7 +16,7 @@ class CategoryList extends Component {
         var category, items = [];
         for (var i = 0; i < this.props.categories.length; i++) {
             category = this.props.categories[i];
-            items.push({value: category.categoryId, label: category.categoryName});
+            items.push({value: category.id, label: category.name});
         }
         return items;
     }

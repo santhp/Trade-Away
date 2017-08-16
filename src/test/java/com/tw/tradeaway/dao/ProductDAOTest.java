@@ -23,8 +23,10 @@ public class ProductDAOTest {
 
     @Before
     public void before(){
-        cDao.save(new Category(1, "abc"));
-        dao.save(new Product( "p1", "d1", 100, null, new Category(1, "abc")));
+        // TODO Mock really!
+        Category cat1 = new Category("abc");
+        cDao.save(cat1);
+        dao.save(new Product( "p1", "d1", 100d, "", cat1));
     }
 
     @Test

@@ -2,11 +2,10 @@ package com.tw.tradeaway.service;
 
 import com.tw.tradeaway.dao.CategoryDAO;
 import com.tw.tradeaway.dao.ProductDAO;
+import com.tw.tradeaway.dao.ProductSellerQuantityMappingDao;
 import com.tw.tradeaway.dto.ProductDto;
 import com.tw.tradeaway.entities.Category;
-import com.tw.tradeaway.entities.Product;
 import com.tw.tradeaway.entities.ProductSellerQuantityMapping;
-import com.tw.tradeaway.entities.Seller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +20,9 @@ public class CategoriesServiceImpl implements CategoriesService {
     @Autowired
     ProductDAO productDAO;
 
+    @Autowired
+    ProductSellerQuantityMappingDao productSellerQuantityMappingDao;
+
     @Override
     public List<Category> getListOfCategories() {
         List<Category> categories = new ArrayList<>();
@@ -31,14 +33,8 @@ public class CategoriesServiceImpl implements CategoriesService {
     @Override
     public Collection<ProductDto> getListOfProducts(int categoryId) {
 
-        Seller seller = new Seller(1, "ABC");
-        Product product = new Product( "IPhone", "Advanced phone", 10000, null, new Category(1, "Electronics"));
-        ProductSellerQuantityMapping productSellerQuantityMapping = new ProductSellerQuantityMapping(1, product, seller, 10);
-//
-//        List<Product> productList = productDAO.getProductListForGivenCategory(categoryId);
-//
-
-        return EntityToDtoTransformer.transformProductMappingToDot(Arrays.asList(productSellerQuantityMapping));
+        List<ProductSellerQuantityMapping> map =productSellerQuantityMappingDao.getPSQMappingListForGivenCategory(categoryId);
+        return EntityToDtoTransformer.transformProductMappingToDot(map);
 
     }
 }

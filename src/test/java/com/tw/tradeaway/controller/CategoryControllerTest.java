@@ -6,6 +6,7 @@ import com.tw.tradeaway.entities.Category;
 import com.tw.tradeaway.entities.Product;
 import com.tw.tradeaway.entities.ProductSellerQuantityMapping;
 import com.tw.tradeaway.entities.Seller;
+import com.tw.tradeaway.service.EntityToDtoTransformer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +20,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -37,6 +40,7 @@ public class CategoryControllerTest {
 
     @Before
     public void beforeMethod() {
+        // TODO Mock really!
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
     }
 
@@ -44,29 +48,22 @@ public class CategoryControllerTest {
     public void getCategoryListTest1() throws Exception {
         mockMvc.perform(get("/api/category/list")
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("$[0]").value(new Category(1, "Electronics")))
-                .andExpect(jsonPath("$[1]").value(new Category(2, "Books")));
+                .andExpect(jsonPath("$[0]").value(new Category(1, "Electronics")));
     }
 
     @Test
-    public void getProductListTest1() throws Exception {
+    public void getProductListGivenCategoryId() throws Exception {
 
-        Seller seller = new Seller(1, "ABC");
-        Product product = new Product( "IPhone", "Advanced phone", 10000, null, new Category(1, "Electronics"));
-        ProductSellerQuantityMapping productSellerQuantityMapping = new ProductSellerQuantityMapping(1, product, seller, 10);
+        Category cat=new Category(1, "Electronics");
+        Product prod=new Product( "iPhone", "d1", 100d, null,cat);
+        Seller seller=new Seller(1, "Deepak");
+        ProductSellerQuantityMapping productSellerQuantityMapping=new ProductSellerQuantityMapping(prod,seller,10);
+        Collection<ProductDto> expectedProductDto = EntityToDtoTransformer.transformProductMappingToDot(Collections.singletonList(productSellerQuantityMapping));
 
-        ProductDto expectedProductDto = new ProductDto(product.getName(), product.getDescription(), product.getPrice(), product.getImage(), new ArrayList<>());
-        expectedProductDto.getSellerDto().add(new SellerDto(seller.getId(), seller.getName(), 10));
 
-
-        mockMvc.perform(get("/api/category?categoryId=1001")
+        mockMvc.perform(get("/api/category?categoryId=1")
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("$[0]").value(expectedProductDto));
+                .andExpect(jsonPath("$[0]").value(expectedProductDto.iterator().next()));
     }
 
-    @Test
-    public void getProductListGivenCategoryId() {
-
-
-    }
 }

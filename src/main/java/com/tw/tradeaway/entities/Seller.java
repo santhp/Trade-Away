@@ -17,8 +17,13 @@ public class Seller {
     @Column(name = "name")
     String name;
 
+    public Seller(String name) {
+        this.name = name;
+    }
+
     public Seller(int id, String name) {
         this.id = id;
+
         this.name = name;
     }
 

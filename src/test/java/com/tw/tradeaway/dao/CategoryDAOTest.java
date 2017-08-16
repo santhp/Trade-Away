@@ -20,6 +20,8 @@ public class CategoryDAOTest {
 
     @Before
     public void before(){
+
+        // TODO Mock really!
         dao.save(new Category(1002, "cat1"));
     }
 

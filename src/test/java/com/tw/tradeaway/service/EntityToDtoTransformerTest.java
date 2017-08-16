@@ -17,10 +17,10 @@ public class EntityToDtoTransformerTest {
     @Test
     public void getProductDto() throws Exception {
         Seller seller = new Seller(1, "ABC");
-        Product product = new Product( "IPhone", "Advanced phone", 10000, null, new Category(1, "Electronics"));
-        ProductSellerQuantityMapping productSellerQuantityMapping = new ProductSellerQuantityMapping(1, product, seller, 10);
+        Product product = new Product( 1, "IPhone", "Advanced phone", 10000d, null, new Category(1, "Electronics"));
+        ProductSellerQuantityMapping productSellerQuantityMapping = new ProductSellerQuantityMapping(product, seller, 10);
 
-        ProductDto expectedProductDto = new ProductDto(product.getName(), product.getDescription(), product.getPrice(), product.getImage(), new ArrayList<>());
+        ProductDto expectedProductDto = new ProductDto(product.getName(), product.getDescription(), product.getPrice(), product.getImageUrl(), new ArrayList<>());
         expectedProductDto.getSellerDto().add(new SellerDto(seller.getId(), seller.getName(), 10));
 
 

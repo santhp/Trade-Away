@@ -14,15 +14,15 @@ public class Category {
     int id;
 
     @Column(name = "name")
-    String categoryName;
+    String name;
 
-    public Category(int id, String categoryName) {
+    public Category(int id, String name) {
         this.id = id;
-        this.categoryName = categoryName;
+        this.name = name;
     }
 
-    public Category( String categoryName) {
-        this.categoryName = categoryName;
+    public Category( String name) {
+        this.name = name;
     }
 
     public Category() {
@@ -36,14 +36,14 @@ public class Category {
         Category category = (Category) o;
 
         if (id != category.id) return false;
-        return categoryName != null ? categoryName.equals(category.categoryName) : category.categoryName == null;
+        return name != null ? name.equals(category.name) : category.name == null;
     }
 
     @Override
     public int hashCode() {
         int result = 7;
         result = 31 * result + id;
-        result = 31 * result + (categoryName != null ? categoryName.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 }
