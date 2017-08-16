@@ -9,17 +9,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.Iterator;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest
-public class DAOTest {
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringBootTest
+public class SampleDAOTest {
 
-    @Autowired
-    UserDAO dao;
+    //@Autowired
+    SampleDAO dao;
 
-    @Test
+   // @Test
     public void DAOTest() {
 
-        Iterator<User> userIterator = dao.findAll().iterator();
+        Iterator<Sample> userIterator = dao.findAll().iterator();
         while (userIterator.hasNext()) {
             System.out.println(userIterator.next().toString());
         }
