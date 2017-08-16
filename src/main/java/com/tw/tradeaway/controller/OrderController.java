@@ -18,7 +18,7 @@ public class OrderController {
 
 
         //validation
-        if(orderItem == null || orderItem.ProductId == 0){
+        if(orderItem == null || orderItem.getProductId() == 0){
             throw new NullPointerException("Parameter Type [Order ID] cannot be null");
         }
 
