@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.Base64;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -20,7 +18,7 @@ public class UserController {
     public LoginResponse login(@RequestBody Map<String, Object> payload) {
         String email = payload.get("email").toString();
         String token = Base64.getEncoder().encodeToString(email.getBytes(StandardCharsets.UTF_8));
-        return new LoginResponse(1,"Santhosh","kumar","email","buyer",token);
+        return new LoginResponse(1, "Santhosh", "kumar", "email", "buyer", token);
     }
 
 }

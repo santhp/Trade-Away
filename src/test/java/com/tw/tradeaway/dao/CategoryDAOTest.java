@@ -1,5 +1,7 @@
-package com.tw.tradeaway.example;
+package com.tw.tradeaway.dao;
 
+import com.tw.tradeaway.entities.Category;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,18 +13,22 @@ import java.util.Iterator;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class DAOTest {
+public class CategoryDAOTest {
 
     @Autowired
-    UserDAO dao;
+    CategoryDAO dao;
+
+    @Before
+    public void before(){
+        dao.save(new Category(1002, "cat1"));
+    }
 
     @Test
     public void DAOTest() {
 
-        Iterator<User> userIterator = dao.findAll().iterator();
-        while (userIterator.hasNext()) {
-            System.out.println(userIterator.next().toString());
+        Iterator<Category> iterator = dao.findAll().iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next().toString());
         }
-        ;
     }
 }

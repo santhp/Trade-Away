@@ -1,13 +1,13 @@
-package com.tw.tradeaway.example;
+package com.tw.tradeaway.dao;
 
+import com.tw.tradeaway.entities.Category;
+import com.tw.tradeaway.entities.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Repository
-public interface UserDAO extends CrudRepository<User, Integer> {
+public interface CategoryDAO extends CrudRepository<Category, Integer> {
 
-
-    // public User findUSer(String name);
 }

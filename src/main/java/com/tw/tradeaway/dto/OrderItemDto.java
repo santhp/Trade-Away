@@ -29,7 +29,8 @@ public class OrderItemDto {
     public int Qty;
     public String DeliveryAddress;
 
-    public OrderItemDto(){}
+    public OrderItemDto() {
+    }
 
     public OrderItemDto(String productId, int qty, String deliveryAddress) {
         this.ProductId = productId;

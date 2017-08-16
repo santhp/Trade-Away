@@ -1,8 +1,11 @@
 package com.tw.tradeaway.controller;
 
 import com.tw.tradeaway.dto.ProductDto;
+import com.tw.tradeaway.dto.SellerDto;
 import com.tw.tradeaway.entities.Category;
 import com.tw.tradeaway.entities.Product;
+import com.tw.tradeaway.entities.ProductSellerQuantityMapping;
+import com.tw.tradeaway.entities.Seller;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,8 +18,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -38,43 +44,29 @@ public class CategoryControllerTest {
     public void getCategoryListTest1() throws Exception {
         mockMvc.perform(get("/category/list")
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("$[0]", is("Cat1")))
-                .andExpect(jsonPath("$[1]", is("Cat2")));
+                .andExpect(jsonPath("$[0]").value(new Category(1, "Electronics")))
+                .andExpect(jsonPath("$[1]").value(new Category(2, "Books")));
     }
 
-    public void getCategoryListTest2() throws Exception {
-
-
-        //TODO
-
-        mockMvc.perform(get("/category/list")
-                .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("$[0]", is("Cat1")))
-                .andExpect(jsonPath("$[1]", is("Cat2")));
-    }
-
+    @Test
     public void getProductListTest1() throws Exception {
 
-        Category category=new Category(1,"Electronics");
-        Product iphone = new Product(1,"IPHONE", "Its an Iphone", 59999.00, null, category);
+        Seller seller = new Seller(1, "ABC");
+        Product product = new Product( "IPhone", "Advanced phone", 10000, null, new Category(1, "Electronics"));
+        ProductSellerQuantityMapping productSellerQuantityMapping = new ProductSellerQuantityMapping(1, product, seller, 10);
 
-        //TODO
+        ProductDto expectedProductDto = new ProductDto(product.getName(), product.getDescription(), product.getPrice(), product.getImage(), new ArrayList<>());
+        expectedProductDto.getSellerDto().add(new SellerDto(seller.getId(), seller.getName(), 10));
 
 
-        mockMvc.perform(get("/category/list")
+        mockMvc.perform(get("/category?categoryId=1001")
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("$[0]", is("Cat1")))
-                .andExpect(jsonPath("$[1]", is("Cat2")));
+                .andExpect(jsonPath("$[0]").value(expectedProductDto));
     }
 
-    public void getProductListTest2() throws Exception {
+    @Test
+    public void getProductListGivenCategoryId() {
 
 
-        //TODO
-
-        mockMvc.perform(get("/category/list")
-                .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("$[0]", is("Cat1")))
-                .andExpect(jsonPath("$[1]", is("Cat2")));
     }
 }

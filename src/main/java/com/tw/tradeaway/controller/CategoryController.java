@@ -1,6 +1,7 @@
 package com.tw.tradeaway.controller;
 
 import com.tw.tradeaway.dto.ProductDto;
+import com.tw.tradeaway.entities.Category;
 import com.tw.tradeaway.service.CategoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -20,18 +21,17 @@ public class CategoryController {
     CategoriesService categoriesService;
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
-    public List<String> getCategoryList() {
+    public List<Category> getCategoryList() {
 
 
-        return Arrays.asList("Cat1", "Cat2");
+        return categoriesService.getListOfCategories();
     }
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<ProductDto> getProductList(@RequestParam int categoryId) {
+    public Collection<ProductDto> getProductList(@RequestParam int categoryId) {
 
-        categoriesService.getListOfProducts(categoryId);
-        return null;
+        return categoriesService.getListOfProducts(categoryId);
     }
 
 
