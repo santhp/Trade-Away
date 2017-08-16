@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "category", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "api/category", produces = MediaType.APPLICATION_JSON_VALUE)
 public class CategoryController {
 
     @Autowired
