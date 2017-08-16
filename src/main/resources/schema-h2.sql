@@ -1,0 +1,7 @@
+-- Sample Table for Reference
+CREATE TABLE Seller(
+id INTEGER NOT NULL,
+name VARCHAR(100) NOT NULL,
+email VARCHAR(100) DEFAULT NULL,
+address VARCHAR(100) DEFAULT NULL,
+PRIMARY KEY (id));
