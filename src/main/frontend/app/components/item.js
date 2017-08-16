@@ -6,25 +6,30 @@ class Item extends Component {
     }
 
     render() {
-        return <div>
-            <table style={{width: '100%'}}>
-                <tbody>
-                <tr>
-                    <td rowSpan="2">
-                        <img src={this.props.details.imageUrl} style={{height: 100, width: 100}} alt='product'/>
-                    </td>
-                    <td>{this.props.details.name}</td>
-                    <td>Rs. {this.props.details.price}</td>
-                    <td style={{'textAlign': 'right'}}>
-                        <button>Buy</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td colSpan="3">{this.props.details.description}</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>;
+        return (<div>
+            <div className="panel panel-default">
+                <div className="panel-body">
+                    <div className="row">
+                        <div className="col-md-4">
+                            <img height="100" width="100" src={this.props.details.imageUrl}/>
+                        </div>
+                        <div className="col-md-8">
+                            <div className="row">
+                                <div className="col-md-4">{this.props.details.name}</div>
+                                <div className="col-md-4">Rs. {this.props.details.price}</div>
+                                <div className="col-md-4 text-right">
+                                    <button>Buy</button>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-6">{this.props.details.description}</div>
+                                <div className="col-md-4 text-right">Seller</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>);
     }
 }
 

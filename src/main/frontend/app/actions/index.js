@@ -77,26 +77,17 @@ export function getCategories() {
     }
 }
 
-export function getItemList() {
+export function getItemList(categoryId) {
     return function (dispatch) {
-        var products = [
-            {
-                id: 1,
-                name: "Karbonn",
-                price: "12",
-                description: "desc",
-                imageUrl: "http://karbonncdn3.karbonnmobiles.com/images/uploads/main/Image-2QGNHCAXDC5QQMC.jpg"
-            },
-            {
-                id: 2,
-                name: "Redmi",
-                price: "14",
-                description: "ser",
-                imageUrl: "http://global.mifile.cn/webfile/globalimg/en/hd/2014082501/redmi/new_xmhm_16.jpg?2014021402"
-            }];
-        dispatch({
-            type: ITEM_LIST,
-            payload: products
-        });
+        axios.get(`${API_URL}/category/${categoryId}/items`)
+            .then(response => {
+                dispatch({
+                    type: ITEM_LIST,
+                    payload: response.data
+                });
+            })
+            .catch((error) => {
+                errorHandler(dispatch, error.response, AUTH_ERROR)
+            });
     }
 }

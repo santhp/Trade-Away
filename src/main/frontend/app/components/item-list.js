@@ -10,7 +10,11 @@ class ItemList extends Component {
     }
 
     render() {
-        return <div>Items here
+        if (!this.props.items) {
+            return <div></div>;
+        }
+        return <div style={{marginTop: 20}}>
+            {this.props.items.map((i) => <Item key={i.name} details={i}/>)}
         </div>;
     }
 }

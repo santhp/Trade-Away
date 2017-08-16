@@ -22,22 +22,20 @@ class CategoryList extends Component {
     }
 
     render() {
-        if (this.props.user.role === 'buyer') {
-            if (!this.props.categories) {
-                return <div>Loading...</div>;
-            }
-            return (<div><h1>Categories</h1>
+        if (!this.props.categories) {
+            return <div>Loading...</div>;
+        }
+        return (<div><h3>Categories</h3>
+            <div>
                 <Dropdown options={this.transformCategoryList()} onChange={this.onDropdownSelected.bind(this)}
                           placeholder="Select an Category"/>
-                <ItemList/>
-            </div>);
-        } else {
-            return <div>Seller Landing Page</div>
-        }
+            </div>
+            <ItemList/>
+        </div>);
     }
 
     onDropdownSelected(e) {
-        this.props.getItemList();
+        this.props.getItemList(e.value);
     }
 }
 
