@@ -2,10 +2,10 @@ package com.tw.tradeaway.dto;
 
 public class OrderItemDto {
 
-    public int userId;
-    public int ProductId;
-    public int Qty;
-    public String DeliveryAddress;
+    private int userId;
+    private int ProductId;
+    private int Qty;
+    private String DeliveryAddress;
 
 
     public OrderItemDto() {
