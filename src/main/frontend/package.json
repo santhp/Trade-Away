@@ -29,17 +29,19 @@
     "webpack-merge": "^0.8.4"
   },
   "dependencies": {
-    "axios": "^0.9.1",
+    "axios": "^0.13.1",
     "babel-preset-stage-1": "^6.5.0",
     "history": "^2.0.0",
-    "lodash": "^4.5.1",
+    "lodash": "^4.6.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-redux": "^4.4.0",
-    "react-router": "^2.0.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.6.0",
+    "react-cookie": "^0.4.7",
     "react-router-bootstrap": "^0.23.0",
     "react-router-redux": "^4.0.4",
-    "redux": "^3.3.1",
+    "redux": "^3.5.2",
+    "redux-form": "^6.0.0-rc.3",
     "redux-simple-router": "^2.0.4",
     "redux-thunk": "^2.0.1"
   }
