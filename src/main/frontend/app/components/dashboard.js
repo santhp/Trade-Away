@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import CategoryList from './category-list';
 
@@ -9,18 +8,13 @@ class Dashboard extends Component {
         super(props);
     }
 
-
     render() {
         return (
             <div>
-                <CategoryList/>
+                <CategoryList />
             </div>
         );
     }
 }
 
-function mapStateToProps(state) {
-    return { content: state.auth.content };
-}
-
-export default connect(mapStateToProps)(Dashboard);
+export default Dashboard;

@@ -88,8 +88,8 @@ class Register extends Component {
 
 function mapStateToProps(state) {
     return {
-        errorMessage: state.auth.error,
-        message: state.auth.message
+        errorMessage: state.data.error,
+        message: state.data.message
     };
 }
 

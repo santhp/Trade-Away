@@ -32,12 +32,11 @@ class NavbarContent extends Component {
 }
 
 function mapStateToProps(state) {
-    return {user: state.auth.user};
+    return {user: state.data.user};
 }
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({logoutUser:logoutUser}, dispatch);
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavbarContent);

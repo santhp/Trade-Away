@@ -2,7 +2,8 @@ import {
     AUTH_USER,
     UNAUTH_USER,
     AUTH_ERROR,
-    PROTECTED_TEST
+    CATEGORY_LIST,
+    ITEM_LIST
 } from '../actions/types';
 
 const INITIAL_STATE = {error: '', message: '', content: '', authenticated: false}
@@ -16,6 +17,10 @@ export default function (state = INITIAL_STATE, action) {
             return {...state, authenticated: false};
         case AUTH_ERROR:
             return {...state, error: action.payload};
+        case CATEGORY_LIST:
+            return {...state, categories: action.payload};
+        case ITEM_LIST:
+            return {...state, items: action.payload};
     }
 
     return state;

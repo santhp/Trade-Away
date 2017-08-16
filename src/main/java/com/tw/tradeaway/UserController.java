@@ -18,6 +18,7 @@ public class UserController {
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public LoginResponse login(@RequestBody Map<String, Object> payload) {
+        System.out.println(payload.get("email"));
         String email = payload.get("email").toString();
         String token = Base64.getEncoder().encodeToString(email.getBytes(StandardCharsets.UTF_8));
         return new LoginResponse(1,"Santhosh","kumar","email","buyer",token);
