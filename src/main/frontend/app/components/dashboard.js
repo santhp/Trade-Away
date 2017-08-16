@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import CategoryList from './category-list';
+
 class Dashboard extends Component {
 
     constructor(props) {
         super(props);
     }
 
-    renderContent() {
-        if(this.props.content) {
-            return (
-                <p>{this.props.content}</p>
-            );
-        }
-    }
 
     render() {
         return (
             <div>
-                {this.renderContent()}
+                <CategoryList/>
             </div>
         );
     }
