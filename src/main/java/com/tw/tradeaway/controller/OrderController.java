@@ -1,10 +1,10 @@
 package com.tw.tradeaway.controller;
 
+import com.tw.tradeaway.dto.OrderItemDto;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import com.tw.tradeaway.dto.OrderItemDto;
 
 import java.net.URI;
 
@@ -15,7 +15,6 @@ public class OrderController {
     @RequestMapping(value = "order", method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
 
     public ResponseEntity<?> checkoutToPlaceOrder(@RequestBody OrderItemDto orderItem) {
-
 
         //validation
         if(orderItem == null || orderItem.getProductId() == 0){

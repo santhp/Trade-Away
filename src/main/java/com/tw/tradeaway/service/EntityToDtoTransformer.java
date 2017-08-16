@@ -3,21 +3,32 @@ package com.tw.tradeaway.service;
 import com.tw.tradeaway.dto.ProductDto;
 import com.tw.tradeaway.dto.SellerDto;
 import com.tw.tradeaway.entities.Product;
+import com.tw.tradeaway.entities.ProductSellerQuantityMapping;
 import com.tw.tradeaway.entities.Seller;
 
-import java.util.List;
+import java.util.*;
 
 public class EntityToDtoTransformer {
 
-    public static ProductDto getProductDto(Product product, List<Seller> sellerList) {
+    public static Collection<ProductDto> transformProductMappingToDot(List<ProductSellerQuantityMapping> productSellerQuantityMappingList) {
+        Map<Product, ProductDto> outputMap = new HashMap<>();
 
-      //public ProductDto(String name, String description, double price, byte[] image, List<SellerDto> sellerList) {
+        for (ProductSellerQuantityMapping currentMapping : productSellerQuantityMappingList) {
+            Product currentProduct = currentMapping.getProduct();
+            Seller currentSeller = currentMapping.getSeller();
+            int currentQuantity = currentMapping.getQuantity();
 
-        return null;
+
+            if (outputMap.containsKey(currentProduct)) {
+                outputMap.get(currentProduct).getSellerDto().add(new SellerDto(currentSeller.getId(), currentSeller.getName(), currentQuantity));
+            } else {
+                ProductDto newProductDto = new ProductDto(currentProduct.getName(), currentProduct.getDescription(), currentProduct.getPrice(), currentProduct.getImage(), new ArrayList<>());
+                newProductDto.getSellerDto().add(new SellerDto(currentSeller.getId(), currentSeller.getName(), currentQuantity));
+                outputMap.put(currentProduct, newProductDto);
+            }
+        }
+
+        return outputMap.values();
     }
 
-
-    public static SellerDto getSellerDto(Seller seller) {
-       return new SellerDto(seller.getSellerName(), seller.getSellerId()) ;
-    }
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,22 +22,18 @@ public class CategoryController {
     @Autowired
     CategoriesService categoriesService;
 
-    @RequestMapping(value = "list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "list", method = RequestMethod.GET)
     public List<Category> getCategoryList() {
-        List<Category> categoryList = new ArrayList<>();
-        categoryList.add(new Category(1, "Mobiles"));
-        categoryList.add(new Category(2, "Laptops"));
-        categoryList.add(new Category(3, "Television"));
-        categoryList.add(new Category(4, "Grocery"));
-        return categoryList;
+
+
+        return categoriesService.getListOfCategories();
     }
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<ProductDto> getProductList(@RequestParam int categoryId) {
+    public Collection<ProductDto> getProductList(@RequestParam int categoryId) {
 
-        categoriesService.getListOfProducts(categoryId);
-        return null;
+        return categoriesService.getListOfProducts(categoryId);
     }
 
 
