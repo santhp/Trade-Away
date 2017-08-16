@@ -1,5 +1,8 @@
 package com.tw.tradeaway.entities;
 
+import lombok.Data;
+
+@Data
 public class Category {
     int categoryId;
     String categoryName;
