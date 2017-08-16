@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.sample;
+package com.tw.tradeaway.example;
 
 import javax.persistence.*;
 
