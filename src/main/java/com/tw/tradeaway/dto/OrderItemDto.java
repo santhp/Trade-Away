@@ -1,6 +1,6 @@
-package viewmodel;
+package com.tw.tradeaway.dto;
 
-public class OrderItem {
+public class OrderItemDto {
     public String getProductId() {
         return ProductId;
     }
@@ -29,9 +29,9 @@ public class OrderItem {
     public int Qty;
     public String DeliveryAddress;
 
-    public OrderItem(){}
+    public OrderItemDto(){}
 
-    public OrderItem(String productId, int qty, String deliveryAddress) {
+    public OrderItemDto(String productId, int qty, String deliveryAddress) {
         this.ProductId = productId;
         this.Qty = qty;
         this.DeliveryAddress = deliveryAddress;

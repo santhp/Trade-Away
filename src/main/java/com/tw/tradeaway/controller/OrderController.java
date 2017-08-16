@@ -4,7 +4,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import viewmodel.OrderItem;
+import com.tw.tradeaway.dto.OrderItemDto;
 
 import java.net.URI;
 
@@ -13,7 +13,11 @@ import java.net.URI;
 public class OrderController {
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public ResponseEntity<?> checkoutToPlaceOrder(@RequestBody OrderItem orderItem) {
+    public ResponseEntity<?> checkoutToPlaceOrder(@RequestBody OrderItemDto orderItem) {
+
+        if(orderItem == null || orderItem.ProductId==null){
+            throw new NullPointerException("Parameter Type cannot be null");
+        }
 
         // TODO:: Create order here
 
@@ -25,9 +29,9 @@ public class OrderController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public OrderItem getOrder() {
+    public OrderItemDto getOrder() {
 
-        OrderItem item = new OrderItem("item001", 1, "deliveryAddress");
+        OrderItemDto item = new OrderItemDto("item001", 1, "deliveryAddress");
         return item;
     }
 }

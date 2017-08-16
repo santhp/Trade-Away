@@ -11,7 +11,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import viewmodel.OrderItem;
+import com.tw.tradeaway.dto.OrderItemDto;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -29,7 +29,7 @@ public class OrderControllerTest {
     public void mustCheckOutAnItemToPlaceOrder() throws Exception {
         Gson gson = new Gson();
 
-        OrderItem item = new OrderItem("item001", 1, "deliveryAddress");
+        OrderItemDto item = new OrderItemDto("item001", 1, "deliveryAddress");
         String orderJson = gson.toJson(item);
 
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
@@ -40,5 +40,22 @@ public class OrderControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(orderJson))
                 .andExpect(status().isCreated());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void mustFailPlacingOrderWhenInputIsNullOrBlank() throws Exception {
+        Gson gson = new Gson();
+
+        OrderItemDto item = new OrderItemDto();
+        String orderJson = gson.toJson(item);
+
+        mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
+
+        mockMvc.perform(
+                post("/order")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(orderJson))
+                .andExpect(status().is4xxClientError());
     }
 }
