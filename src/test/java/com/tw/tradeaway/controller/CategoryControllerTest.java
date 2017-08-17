@@ -61,8 +61,8 @@ public class CategoryControllerTest {
         Collection<ProductDto> expectedProductDto = EntityToDtoTransformer.transformProductMappingToDot(Collections.singletonList(productSellerQuantityMapping));
 
 
-        mockMvc.perform(get("/api/category?categoryId=1")
-                .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful())
+        mockMvc.perform(get("/api/category/1/items")
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful()).andDo(print())
                 .andExpect(jsonPath("$[0]").value(expectedProductDto.iterator().next()));
     }
 
