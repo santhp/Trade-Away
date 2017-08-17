@@ -6,4 +6,5 @@ export const AUTH_USER = 'auth_user',
     CATEGORY_LIST = 'category_list',
     ITEM_LIST = "item_list",
     SELLER_ORDERS = "seller_orders",
+    CANCEL_CHECKOUT="cancel_checkout",
     BUY_ITEM="buy_item";

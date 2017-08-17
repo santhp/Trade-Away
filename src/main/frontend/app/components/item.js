@@ -12,7 +12,7 @@ class BuyButton extends Component{
     }
     render() {
         if (this.isAvailable()) {
-            return <button>Buy</button>;
+            return <button onClick={this.checkout.bind(this)}>Buy</button>;
         } else {
             return <button disabled="disabled" title="Out of stock!" className="Input-Disabled">Buy</button>
         }
@@ -24,6 +24,10 @@ class Item extends Component {
         super(props);
     }
 
+    isQuantityAvailable() {
+        return this.props.details.sellerDto.reduce(function(quantity, seller){return quantity + seller.quantity},0) > 0
+    }
+
     checkout(){
         var details = this.props.details;
         var data={productId :details.productId,
@@ -32,6 +36,14 @@ class Item extends Component {
                     buyerId: this.props.userId,
                     imageUrl: details.imageUrl}
         this.props.buyItem(data);
+    }
+
+    renderButton() {
+        if (this.isQuantityAvailable()) {
+            return <button onClick={this.checkout.bind(this)}>Buy</button>;
+        } else {
+            return <button disabled="disabled" title="Out of stock!" className="Input-Disabled">Buy</button>
+        }
     }
 
     render() {
@@ -47,7 +59,7 @@ class Item extends Component {
                                 <div className="col-md-4">{this.props.details.name}</div>
                                 <div className="col-md-4">&#8377; {this.props.details.price}</div>
                                 <div className="col-md-4 text-right">
-                                    <BuyButton sellers={this.props.details.sellerDto}/>
+                                    {this.renderButton()}
                                 </div>
                             </div>
                         </div>

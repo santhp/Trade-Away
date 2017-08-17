@@ -5,6 +5,7 @@ import {
     CATEGORY_LIST,
     ITEM_LIST,
     SELLER_ORDERS,
+    CANCEL_CHECKOUT,
     BUY_ITEM
 } from '../actions/types';
 
@@ -35,6 +36,8 @@ export default function (state = INITIAL_STATE, action) {
             return {...state, seller_orders: action.payload};
         case BUY_ITEM:
             return {...state, checkout_details: action.payload};
+        case CANCEL_CHECKOUT:
+            return {...state, checkout_details:''};
     }
 
     return state;

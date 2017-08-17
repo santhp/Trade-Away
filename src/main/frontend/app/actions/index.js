@@ -8,6 +8,7 @@ import {
     CATEGORY_LIST,
     ITEM_LIST,
     SELLER_ORDERS,
+    CANCEL_CHECKOUT,
     BUY_ITEM
 } from './types';
 
@@ -69,6 +70,14 @@ export function buyItem(checkoutDetails) {
         dispatch({type: BUY_ITEM,
             payload: checkoutDetails});
         browserHistory.push('/checkout');
+    }
+}
+
+
+export function cancelCheckout() {
+    return function (dispatch) {
+        dispatch({type: CANCEL_CHECKOUT});
+        browserHistory.push('/dashboard');
     }
 }
 

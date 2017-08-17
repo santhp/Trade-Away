@@ -17,7 +17,7 @@ class Checkout extends Component {
     }
 
     onCancelOrder(e) {
-
+        this.props.cancelCheckout();
     }
 
 
