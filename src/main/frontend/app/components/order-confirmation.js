@@ -11,11 +11,11 @@ class OrderConfirmation extends Component {
         return (
 
             <div>
-            <h2> Your Order is successfully placed and the seller would process the order shortly </h2>
+                <h3> Your Order is successfully placed and the seller would process the order shortly </h3>
+                <button class="btn btn-default">OK</button>
 
-        </div>
-
-    );
+            </div>
+        );
     }
 }
 
