@@ -73,7 +73,7 @@ class Login extends Component {
                         </div>
                     </div>
                     <div style={{marginTop: 10}}>
-                        <button type="submit" className="btn">Login</button>
+                        <button type="submit" className="btn"><span className="glyphicon glyphicon-log-in"/> Login</button>
                     </div>
                 </form>
             </div>

@@ -3,13 +3,17 @@ import {connect} from 'react-redux';
 
 import * as actions from '../actions';
 
-class BuyButton extends Component{
+class BuyButton extends Component {
     constructor(props) {
         super(props);
     }
+
     isAvailable() {
-        return this.props.sellers.reduce(function(quantity, seller){return quantity + seller.quantity},0) > 0
+        return this.props.sellers.reduce(function (quantity, seller) {
+            return quantity + seller.quantity
+        }, 0) > 0
     }
+
     render() {
         if (this.isAvailable()) {
             return <button onClick={this.checkout.bind(this)}>Buy</button>;
@@ -25,24 +29,32 @@ class Item extends Component {
     }
 
     isQuantityAvailable() {
-        return this.props.details.sellerDto.reduce(function(quantity, seller){return quantity + seller.quantity},0) > 0
+        return this.props.details.sellerDto.reduce(function (quantity, seller) {
+            return quantity + seller.quantity
+        }, 0) > 0
     }
 
-    checkout(){
+    checkout() {
         var details = this.props.details;
-        var data={productId :details.productId,
-                    productName:details.name,
-                    sellerId:details.sellerDto[0].sellerId,
-                    buyerId: this.props.userId,
-                    imageUrl: details.imageUrl}
+        var data = {
+            productId: details.productId,
+            productName: details.name,
+            sellerId: details.sellerDto[0].sellerId,
+            buyerId: this.props.userId,
+            imageUrl: details.imageUrl
+        }
         this.props.buyItem(data);
     }
 
     renderButton() {
         if (this.isQuantityAvailable()) {
-            return <button onClick={this.checkout.bind(this)}>Buy</button>;
+            return <button onClick={this.checkout.bind(this)}>
+                <span className="glyphicon glyphicon-shopping-cart"/> Buy
+            </button>;
         } else {
-            return <button disabled="disabled" title="Out of stock!" className="Input-Disabled">Buy</button>
+            return <button disabled="disabled" title="Out of stock!" className="Input-Disabled">
+                <span className="glyphicon glyphicon-shopping-cart"/> Buy
+            </button>
         }
     }
 
@@ -66,7 +78,7 @@ class Item extends Component {
                         <div className="col-md-8" style={{marginTop: 20}}>
                             <div className="row">
                                 <div className="col-md-6">{this.props.details.description}</div>
-                                <div className="col-md-6 text-right">{this.props.details.sellerDto.length - 1 } more
+                                <div className="col-md-6 text-right">{this.props.details.sellerDto.length - 1} more
                                     sellers
                                 </div>
                             </div>

@@ -57,7 +57,7 @@ public class CategoryControllerTest {
         Category cat=new Category("Mobiles");
         Product prod = new Product("iPhone 6", "8MP primary camera with auto focus and 1.2MP front facing camera\n" +
                 "11.4 centimeters (4.7-inch) retina HD touchscreen with 1334 x 750 pixels resolution and 326 ppi pixel density\n", 26634d,
-                "https://www.o2.co.uk/shop/homepage/images/shop15/brand/apple/iphone-6/apple-iphone-6-2016-ios-10-gallery-img-1-101016.jpg", cat);
+                "https://www.o2.co.uk/shop/homepage/images/shop15/brand/apple/iphone-6/apple-iphone-6-2016-ios-10-gallery-img-2-101016.jpg", cat);
         Seller seller=new Seller(1, "Deepak");
         ProductSellerQuantityMapping productSellerQuantityMapping=new ProductSellerQuantityMapping(prod,seller,10);
         Collection<ProductDto> expectedProductDto = EntityToDtoTransformer.transformProductMappingToDot(Collections.singletonList(productSellerQuantityMapping));

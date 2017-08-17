@@ -33,33 +33,36 @@ class Checkout extends Component {
                 <div className="panel panel-default">
                     <div className="panel-body">
                         <div className="row">
-                            <div className="col-md-4">
-                                <div className="row">
-                                    <label>Item Selected</label>
-                                    {this.props.details.productName}
-                                </div>
-                                <div className="row">
-                                    <label>Quantity</label>
-                                    <select
-                                        onChange={(event) => this.setState({qty: event.target.value})}>{options}</select>
-                                </div>
-                                <div className="row">
-                                    <label>Delivery Address</label>
-                                    <textArea value={this.props.address}
-                                              onChange={(event, newValue) => this.setState({deliveryAddress: newValue})}></textArea>
-                                </div>
-                            </div>
 
                             <div className="col-md-2">
                                 <img height="110" width="110" src={this.props.details.imageUrl}/>
                             </div>
+
+                            <div className="col-md-10">
+                                <div className="row">
+                                    <label className="control-label col-sm-2">Item Selected</label>
+                                    <div className="col-sm-10">{this.props.details.productName}</div>
+                                </div>
+                                <div className="row">
+                                    <label className="col-sm-2 control-label">Quantity</label>
+                                    <select className="form-control" style={{width: 100}}
+                                            onChange={(event) => this.setState({qty: event.target.value})}>{options}</select>
+
+                                </div>
+                                <div className="row" style={{paddingTop: 10}}>
+                                    <label className="control-label col-sm-2">Delivery Address</label>
+                                    <textArea value={this.props.address} className="form-control" style={{width: 300}}
+                                              onChange={(event, newValue) => this.setState({deliveryAddress: newValue})}></textArea>
+                                </div>
+                            </div>
                         </div>
 
-                        <div className="row" style={{marginTop: 10}}>
-                            <div className="col-md-4"></div>
-                            <button className="btn btn-success" onClick={this.onPlaceOrder.bind(this)}>Place Order
+                        <div className="btn-toolbar" style={{marginTop: 10}}>
+                            <div className="col-md-3"></div>
+                            <button className="btn btn-default" onClick={this.onPlaceOrder.bind(this)}>
+                                <span className="glyphicon glyphicon-shopping-cart"/> Place Order
                             </button>
-                            <button className="btn btn-danger" onClick={this.onCancelOrder.bind(this)}>Cancel</button>
+                            <button className="btn" onClick={this.onCancelOrder.bind(this)}>Cancel</button>
 
                         </div>
                     </div>

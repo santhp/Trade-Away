@@ -44,7 +44,7 @@ public class StaticDataLoader implements ApplicationRunner {
 
         Product prod = new Product("iPhone 6", "8MP primary camera with auto focus and 1.2MP front facing camera\n" +
                 "11.4 centimeters (4.7-inch) retina HD touchscreen with 1334 x 750 pixels resolution and 326 ppi pixel density\n", 26634d,
-                "https://www.o2.co.uk/shop/homepage/images/shop15/brand/apple/iphone-6/apple-iphone-6-2016-ios-10-gallery-img-1-101016.jpg", Mobiles);
+                "https://www.o2.co.uk/shop/homepage/images/shop15/brand/apple/iphone-6/apple-iphone-6-2016-ios-10-gallery-img-2-101016.jpg", Mobiles);
         productDAO.save(prod);
 
         ProductSellerQuantityMapping prodSelMapping = new ProductSellerQuantityMapping(prod, deepak, 10);
@@ -76,7 +76,7 @@ public class StaticDataLoader implements ApplicationRunner {
         productSellerQuantityMappingDao.save(prodSelMapping);
 
         prod = new Product("Mac", "13.3-inch (diagonal) LED-backlit display with IPS technology; 2560x1600 native resolution at 227 pixels per inch with support for millions of colours", 204934d,
-                "https://cdn.cultofmac.com/wp-content/uploads/2017/01/macbook-pro-touchbar.jpg", laptops);
+                "http://cdn2.alphr.com/sites/alphr/files/apple-macbook-2015-front-zoomed-out.jpg", laptops);
         productDAO.save(prod);
 
         prodSelMapping = new ProductSellerQuantityMapping(prod, raja, 100);
