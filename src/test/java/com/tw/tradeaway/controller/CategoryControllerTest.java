@@ -48,14 +48,16 @@ public class CategoryControllerTest {
     public void getCategoryListTest1() throws Exception {
         mockMvc.perform(get("/api/category/list")
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful())
-                .andExpect(jsonPath("$[0]").value(new Category(1, "Electronics")));
+                .andExpect(jsonPath("$[0]").value(new Category(1, "Mobiles")));
     }
 
     @Test
     public void getProductListGivenCategoryId() throws Exception {
 
-        Category cat=new Category(1, "Electronics");
-        Product prod=new Product( "iPhone", "d1", 100d, null,cat);
+        Category cat=new Category("Mobiles");
+        Product prod = new Product("iPhone 6", "8MP primary camera with auto focus and 1.2MP front facing camera\n" +
+                "11.4 centimeters (4.7-inch) retina HD touchscreen with 1334 x 750 pixels resolution and 326 ppi pixel density\n", 26634d,
+                "https://www.o2.co.uk/shop/homepage/images/shop15/brand/apple/iphone-6/apple-iphone-6-2016-ios-10-gallery-img-1-101016.jpg", cat);
         Seller seller=new Seller(1, "Deepak");
         ProductSellerQuantityMapping productSellerQuantityMapping=new ProductSellerQuantityMapping(prod,seller,10);
         Collection<ProductDto> expectedProductDto = EntityToDtoTransformer.transformProductMappingToDot(Collections.singletonList(productSellerQuantityMapping));

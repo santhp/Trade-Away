@@ -44,6 +44,7 @@
     "redux-form": "^6.0.0-rc.3",
     "redux-simple-router": "^2.0.4",
     "redux-thunk": "^2.0.1",
-    "react-dropdown": "^1.2.5"
+    "react-dropdown": "^1.2.5",
+    "react-bootstrap-table": "4.0.1"
   }
 }

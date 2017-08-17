@@ -25,7 +25,7 @@ class Item extends Component {
                         <div className="col-md-8" style={{marginTop: 20}}>
                             <div className="row">
                                 <div className="col-md-6">{this.props.details.description}</div>
-                                <div className="col-md-6 text-right">{this.props.details.sellerDto.length} more
+                                <div className="col-md-6 text-right">{this.props.details.sellerDto.length - 1 } more
                                     sellers
                                 </div>
                             </div>

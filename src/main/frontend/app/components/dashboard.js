@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+
 import CategoryList from './category-list';
+import SellerDashboard from './seller-dashboard';
 
 class Dashboard extends Component {
 
@@ -13,7 +15,7 @@ class Dashboard extends Component {
         if (this.props.user.role === 'buyer') {
             return (<div><CategoryList/></div>);
         } else {
-            return (<div>Seller Landing Page</div>);
+            return (<div><SellerDashboard/></div>);
         }
     }
 }
