@@ -17,7 +17,6 @@ import java.util.List;
 @Transactional
 @Repository
 public interface ProductDAO extends CrudRepository<Product, Integer> {
-
     @Query("select p from Product p where p.category.id=:id")
     List<Product> getProductListForGivenCategory(@Param("id")int id);
 }

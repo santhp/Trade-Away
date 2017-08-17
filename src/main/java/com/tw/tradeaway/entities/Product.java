@@ -10,14 +10,27 @@ import java.util.Arrays;
 @Entity
 @Table(name="Product")
 public class Product {
+    public int getId() {
+        return id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
+
+    public String getName() {
+        return name;
+    }
 
     @Column(name = "name")
     String name;
     @Column(name = "description")
     String description;
+
+    public Double getPrice() {
+        return price;
+    }
+
     @Column(name = "price")
     Double price;
     @Column(name = "image")

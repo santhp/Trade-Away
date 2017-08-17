@@ -19,6 +19,8 @@ public class StaticDataLoader implements ApplicationRunner {
     private SellerDAO sellerDAO;
     @Autowired
     private ProductSellerQuantityMappingDao productSellerQuantityMappingDao;
+    @Autowired
+    private OrderDAO orderDAO;
 
     public void run(ApplicationArguments args) {
         User buyer1 = new User("pavan", "kumar","pavan@gmail.com","90001212","buyer","address", "password");
@@ -80,6 +82,7 @@ public class StaticDataLoader implements ApplicationRunner {
         prodSelMapping = new ProductSellerQuantityMapping(prod, raja, 100);
         productSellerQuantityMappingDao.save(prodSelMapping);
 
-
+        Order order = new Order(prod,1,2,1,"NEW INDIANA","Pending");
+        orderDAO.save(order);
     }
 }

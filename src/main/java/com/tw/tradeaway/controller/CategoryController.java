@@ -21,8 +21,6 @@ public class CategoryController {
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public List<Category> getCategoryList() {
-
-
         return categoriesService.getListOfCategories();
     }
 

@@ -42,9 +42,9 @@ class Orders extends Component {
                 <BootstrapTable data={this.props.orders}>
                     <TableHeaderColumn dataField='orderId' isKey>Order Id</TableHeaderColumn>
                     <TableHeaderColumn dataField='productId'>Item Id</TableHeaderColumn>
-                    <TableHeaderColumn dataField='name'>Item Name</TableHeaderColumn>
+                    <TableHeaderColumn dataField='productname'>Item Name</TableHeaderColumn>
                     <TableHeaderColumn dataField='price'>Amount</TableHeaderColumn>
-                    <TableHeaderColumn dataField='address'>Address</TableHeaderColumn>
+                    <TableHeaderColumn dataField='deliveryAddress'>Address</TableHeaderColumn>
                     <TableHeaderColumn dataField='status'>Status</TableHeaderColumn>
                 </BootstrapTable>
 

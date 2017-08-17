@@ -3,7 +3,11 @@ package com.tw.tradeaway.controller;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.tw.tradeaway.dto.OrderItemDto;
 import com.tw.tradeaway.dto.ProductDto;
+import com.tw.tradeaway.service.CategoriesService;
+import com.tw.tradeaway.service.SellerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +20,15 @@ import java.util.Collection;
 @RequestMapping(value = "api/seller", produces = MediaType.APPLICATION_JSON_VALUE)
 public class SellerController {
 
+    @Autowired
+    SellerService sellerService;
+
     @RequestMapping(value = "{sellerId}/orders", method = RequestMethod.GET)
+    public Collection<OrderItemDto> getOrderList(@PathVariable("sellerId") int sellerId) {
+        return sellerService.getOrders(sellerId);
+    }
+
+    @RequestMapping(value = "{sellerId}/orders/test", method = RequestMethod.GET)
     public String getOrders(@PathVariable("sellerId") int sellerId) {
         JsonArray arr =new JsonArray();
         JsonObject json = new JsonObject();

@@ -13,6 +13,8 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+
+
     @OneToOne
     @JoinColumn(name = "Product_ID", referencedColumnName = "id")
     private Product product;
@@ -38,6 +40,34 @@ public class Order {
     }
 
     public Order() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public int getBuyerID() {
+        return buyerID;
+    }
+
+    public int getSellerID() {
+        return sellerID;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public String getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
 

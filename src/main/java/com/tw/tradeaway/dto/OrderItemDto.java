@@ -17,6 +17,7 @@ public class OrderItemDto {
     private List<String> errorMsg=new ArrayList<>();
     private int orderId;
     private double price;
+    private String status;
 
     public OrderItemDto() {
     }
@@ -27,6 +28,21 @@ public class OrderItemDto {
         this.productId = productId;
         this.qty = qty;
         this.deliveryAddress = deliveryAddress;
+    }
+
+    public OrderItemDto(int buyerId, int sellerId, int productId, String productname, int qty, String deliveryAddress, int orderId, double price) {
+        this.buyerId = buyerId;
+        this.sellerId = sellerId;
+        this.productId = productId;
+        this.productname = productname;
+        this.qty = qty;
+        this.deliveryAddress = deliveryAddress;
+        this.orderId = orderId;
+        this.price = price;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 }
 
