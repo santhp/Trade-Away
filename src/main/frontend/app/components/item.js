@@ -1,5 +1,21 @@
 import React, {Component} from 'react';
 
+class BuyButton extends Component{
+    constructor(props) {
+        super(props);
+    }
+    isAvailable() {
+        return this.props.sellers.reduce(function(quantity, seller){return quantity + seller.quantity},0) > 0
+    }
+    render() {
+        if (this.isAvailable()) {
+            return <button>Buy</button>;
+        } else {
+            return <button disabled="disabled" title="Out of stock!" className="Input-Disabled">Buy</button>
+        }
+    }
+}
+
 class Item extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +34,7 @@ class Item extends Component {
                                 <div className="col-md-4">{this.props.details.name}</div>
                                 <div className="col-md-4">&#8377; {this.props.details.price}</div>
                                 <div className="col-md-4 text-right">
-                                    <button>Buy</button>
+                                    <BuyButton sellers={this.props.details.sellerDto}/>
                                 </div>
                             </div>
                         </div>

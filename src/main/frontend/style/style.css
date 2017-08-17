@@ -6,6 +6,10 @@
     position: relative;
 }
 
+.Input-Disabled {
+    border: none;
+}
+
 .Dropdown-control {
     position: relative;
     overflow: hidden;

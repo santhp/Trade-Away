@@ -54,9 +54,16 @@ public class StaticDataLoader implements ApplicationRunner {
         prodSelMapping = new ProductSellerQuantityMapping(prod, raja, 20);
         productSellerQuantityMappingDao.save(prodSelMapping);
 
-
         prodSelMapping = new ProductSellerQuantityMapping(prod, deepak, 50);
         productSellerQuantityMappingDao.save(prodSelMapping);
+
+        //Out of stock simulation.
+        prod = new Product("iPhone 10S", "Features: Everything beyond your imagination", 1000000000000d,
+                "http://www.ced.ltd.uk/img/Firebird/Firebird_Gneiss_Wet.png", Mobiles);
+        productDAO.save(prod);
+        prodSelMapping = new ProductSellerQuantityMapping(prod, raja, 0);
+        productSellerQuantityMappingDao.save(prodSelMapping);
+
 
         //Laptops
         prod = new Product("Dell 2345", "38.1cm (15) performance laptop with Intel® processors and the latest graphics for a new level of fun, games and videos", 26634d,
