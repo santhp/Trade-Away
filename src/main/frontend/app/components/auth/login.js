@@ -16,6 +16,13 @@ const renderField = field => (
     </div>
 );
 
+const renderPasswordField = field => (
+    <div>
+        <input type="password" className="form-control" {...field.input} />
+        {field.touched && field.error && <div className="error">{field.error}</div>}
+    </div>
+);
+
 function validate(formProps) {
     const errors = {};
 
@@ -61,7 +68,8 @@ class Login extends Component {
                     <div className="row">
                         <div className="col-md-6">
                             <label>Password</label>
-                            <Field name="password" className="form-control" component={renderField} type="password"/>
+
+                            <Field name="password" className="form-control" component={renderPasswordField}/>
                         </div>
                     </div>
                     <div style={{marginTop: 10}}>

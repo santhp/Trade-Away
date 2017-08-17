@@ -1,10 +1,10 @@
-package com.tw.tradeaway;
+package com.tw.tradeaway.dto;
 
-public class LoginResponse {
+public class UserProfile {
     int id;
     String firstName, lastName, email, role, token;
 
-    public LoginResponse(int id, String firstName, String lastName, String email, String role, String token) {
+    public UserProfile(int id, String firstName, String lastName, String email, String role, String token) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

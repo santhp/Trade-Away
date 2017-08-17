@@ -1,13 +1,7 @@
 package com.tw.tradeaway.controller;
 
-import com.tw.tradeaway.dao.CategoryDAO;
-import com.tw.tradeaway.dao.ProductDAO;
-import com.tw.tradeaway.dao.ProductSellerQuantityMappingDao;
-import com.tw.tradeaway.dao.SellerDAO;
-import com.tw.tradeaway.entities.Category;
-import com.tw.tradeaway.entities.Product;
-import com.tw.tradeaway.entities.ProductSellerQuantityMapping;
-import com.tw.tradeaway.entities.Seller;
+import com.tw.tradeaway.dao.*;
+import com.tw.tradeaway.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -15,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class StaticDataLoader implements ApplicationRunner {
+    @Autowired
+    private UserDAO userDAO;
     @Autowired
     private CategoryDAO categoryDAO;
     @Autowired
@@ -25,6 +21,12 @@ public class StaticDataLoader implements ApplicationRunner {
     private ProductSellerQuantityMappingDao productSellerQuantityMappingDao;
 
     public void run(ApplicationArguments args) {
+        User buyer1 = new User("pavan", "kumar","pavan@gmail.com","90001212","buyer","address", "password");
+        userDAO.save(buyer1);
+        User seller1 = new User("deepak", "v","deepak@gmail.com","90001212","seller","address", "password");
+        userDAO.save(seller1);
+
+
         Category Mobiles = new Category("Mobiles");
         categoryDAO.save(Mobiles);
 
