@@ -11,7 +11,7 @@ class Item extends Component {
                 <div className="panel-body">
                     <div className="row">
                         <div className="col-md-4">
-                            <img height="100" width="100" src={this.props.details.imageUrl}/>
+                            <img height="150" width="150" src={this.props.details.imageUrl}/>
                         </div>
                         <div className="col-md-8">
                             <div className="row">

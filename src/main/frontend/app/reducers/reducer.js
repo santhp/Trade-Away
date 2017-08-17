@@ -12,13 +12,13 @@ export default function (state = INITIAL_STATE, action) {
 
     switch (action.type) {
         case AUTH_USER:
-            return {...state, error: '', message: '', authenticated: true, user: action.payload};
+            return {...state, error: '', message: '', authenticated: true, user: action.payload, categories:'', items:''};
         case UNAUTH_USER:
             return {...state, authenticated: false, user:''};
         case AUTH_ERROR:
             return {...state, error: action.payload};
         case CATEGORY_LIST:
-            return {...state, categories: action.payload};
+            return {...state, categories: action.payload, items:''};
         case ITEM_LIST:
             return {...state, items: action.payload};
     }
