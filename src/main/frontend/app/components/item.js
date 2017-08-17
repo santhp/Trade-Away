@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
+import * as actions from '../actions';
 
 class BuyButton extends Component{
     constructor(props) {
@@ -19,6 +22,16 @@ class BuyButton extends Component{
 class Item extends Component {
     constructor(props) {
         super(props);
+    }
+
+    checkout(){
+        var details = this.props.details;
+        var data={productId :details.productId,
+                    productName:details.name,
+                    sellerId:details.sellerDto[0].sellerId,
+                    buyerId: this.props.userId,
+                    imageUrl: details.imageUrl}
+        this.props.buyItem(data);
     }
 
     render() {
@@ -53,4 +66,11 @@ class Item extends Component {
     }
 }
 
-export default Item;
+
+function mapStateToProps(state) {
+    return {
+        userId: state.data.user.id
+    };
+}
+
+export default connect(mapStateToProps, actions)(Item);

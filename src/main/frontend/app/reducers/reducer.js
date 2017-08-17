@@ -4,7 +4,8 @@ import {
     AUTH_ERROR,
     CATEGORY_LIST,
     ITEM_LIST,
-    SELLER_ORDERS
+    SELLER_ORDERS,
+    BUY_ITEM
 } from '../actions/types';
 
 const INITIAL_STATE = {error: '', message: '', content: '', authenticated: false}
@@ -32,6 +33,8 @@ export default function (state = INITIAL_STATE, action) {
             return {...state, items: action.payload};
         case SELLER_ORDERS :
             return {...state, seller_orders: action.payload};
+        case BUY_ITEM:
+            return {...state, checkout_details: action.payload};
     }
 
     return state;

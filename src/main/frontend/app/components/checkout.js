@@ -1,83 +1,80 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import {connect} from 'react-redux';
 
-class Checkout extends Component{
-    constructor(props){
+import * as actions from '../actions';
+
+class Checkout extends Component {
+    constructor(props) {
         super(props);
-        this.state={
-            productId:props.product.id,
-            qty:1,
-            deliveryAddress:props.address
+    }
+
+    onPlaceOrder(e) {
+        var payload = {
+            "productId": this.state.productId,
+            "qty": this.state.qty,
+            "deliveryAddress": this.state.deliveryAddress
         };
     }
 
-    onPlaceOrder(e){
-        e.preventDefault();
+    onCancelOrder(e) {
 
-        var apiBaseUrl = "http://localhost:8090/order/";
-        var self = this;
-        var payload= {
-            "productId":this.state.productId,
-            "qty":this.state.qty,
-            "deliveryAddress":this.state.deliveryAddress
-        };
-
-        axios.post(apiBaseUrl, payload)
-            .then(function (response) {
-                console.log(response);
-                if(response.status == 201){
-                    console.log("Order placed sucessfully.");
-                    alert("Order placed successfully.")
-                }
-                else {
-                    console.log("Error creating order...");
-                    alert("Order creation failed...");
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
     }
 
-    render(){
-        var qty = this.props.product.qty;
+
+    render() {
         var options = [];
-        for (var i = 0; i < qty; i++) {
-            options.push(<option key={i} value={i+1}>{i+1}</option>);
+        for (var i = 0; i < 10; i++) {
+            options.push(<option key={i} value={i + 1}>{i + 1}</option>);
         }
 
         return <div>
-        <h2 style={{'textAlign':'center'}}>Checkout</h2>
-        <div>
+            <h2 style={{'textAlign': 'center'}}>Checkout</h2>
+            <div>
+                <div className="panel panel-default">
+                    <div className="panel-body">
+                        <div className="row">
+                            <div className="col-md-4">
+                                <div className="row">
+                                    <label>Item Selected</label>
+                                    {this.props.details.productName}
+                                </div>
+                                <div className="row">
+                                    <label>Quantity</label>
+                                    <select
+                                        onChange={(event) => this.setState({qty: event.target.value})}>{options}</select>
+                                </div>
+                                <div className="row">
+                                    <label>Delivery Address</label>
+                                    <textArea value={this.props.address}
+                                              onChange={(event, newValue) => this.setState({deliveryAddress: newValue})}></textArea>
+                                </div>
+                            </div>
 
-        <table width="500">
-            <tbody>
-            <tr>
-            <td style={{'textAlign':'left'}}>Item Selected</td>
-        <td>:</td>
-        <td>{this.props.product.name}</td>
-        </tr>
-        <tr>
-        <td style={{'textAlign':'left'}}>Quantity</td>
-        <td>:</td>
-        <td><select onChange={(event)=>this.setState({qty:event.target.value})}>{options}</select></td>
-        </tr>
-        <tr>
-        <td style={{'textAlign':'left'}}>Delivery Address</td>
-        <td>:</td>
-        <td><textArea value={this.props.address}
-        onChange = {(event,newValue) => this.setState({deliveryAddress:newValue})}></textArea> </td>
-        </tr>
-        <tr>
-        <td colSpan="3" style={{'textAlign':'center'}}>
-    <button onClick={this.onPlaceOrder.bind(this)}>Place Order</button>
-        <button>Cancel</button></td>
-        </tr>
-        </tbody>
-        </table>
-        </div>
+                            <div className="col-md-2">
+                                <img height="110" width="110" src={this.props.details.imageUrl}/>
+                            </div>
+                        </div>
+
+                        <div className="row" style={{marginTop: 10}}>
+                            <div className="col-md-4"></div>
+                            <button className="btn btn-success" onClick={this.onPlaceOrder.bind(this)}>Place Order
+                            </button>
+                            <button className="btn btn-danger" onClick={this.onCancelOrder.bind(this)}>Cancel</button>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
         </div>;
     }
 }
 
-export default Checkout;
+function mapStateToProps(state) {
+    return {
+        details: state.data.checkout_details
+    };
+}
+
+export default connect(mapStateToProps, actions)(Checkout);

@@ -5,4 +5,5 @@ export const AUTH_USER = 'auth_user',
     RESET_PASSWORD_REQUEST = 'reset_password_request',
     CATEGORY_LIST = 'category_list',
     ITEM_LIST = "item_list",
-    SELLER_ORDERS = "seller_orders";
+    SELLER_ORDERS = "seller_orders",
+    BUY_ITEM="buy_item";

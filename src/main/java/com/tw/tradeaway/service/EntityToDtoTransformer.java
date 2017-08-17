@@ -22,7 +22,7 @@ public class EntityToDtoTransformer {
             if (outputMap.containsKey(currentProduct)) {
                 outputMap.get(currentProduct).getSellerDto().add(new SellerDto(currentSeller.getId(), currentSeller.getName(), currentQuantity));
             } else {
-                ProductDto newProductDto = new ProductDto(currentProduct.getName(), currentProduct.getDescription(), currentProduct.getPrice(), currentProduct.getImageUrl(), new ArrayList<>());
+                ProductDto newProductDto = new ProductDto(currentProduct.getId(),currentProduct.getName(), currentProduct.getDescription(), currentProduct.getPrice(), currentProduct.getImageUrl(), new ArrayList<>());
                 newProductDto.getSellerDto().add(new SellerDto(currentSeller.getId(), currentSeller.getName(), currentQuantity));
                 outputMap.put(currentProduct, newProductDto);
             }

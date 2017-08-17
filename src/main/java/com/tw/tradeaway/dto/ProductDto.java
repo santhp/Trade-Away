@@ -8,13 +8,15 @@ import java.util.List;
 @Data
 public class ProductDto {
 
+    int productId;
     String name;
     String description;
     double price;
     String imageUrl;
     List<SellerDto> sellerDto;
 
-    public ProductDto(String name, String description, double price, String imageUrl, List<SellerDto> sellerDto) {
+    public ProductDto(int productId,String name, String description, double price, String imageUrl, List<SellerDto> sellerDto) {
+        this.productId=productId;
         this.name = name;
         this.description = description;
         this.price = price;

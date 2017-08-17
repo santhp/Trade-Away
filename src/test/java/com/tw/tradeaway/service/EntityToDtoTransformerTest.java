@@ -20,7 +20,7 @@ public class EntityToDtoTransformerTest {
         Product product = new Product( 1, "IPhone", "Advanced phone", 10000d, null, new Category(1, "Electronics"));
         ProductSellerQuantityMapping productSellerQuantityMapping = new ProductSellerQuantityMapping(product, seller, 10);
 
-        ProductDto expectedProductDto = new ProductDto(product.getName(), product.getDescription(), product.getPrice(), product.getImageUrl(), new ArrayList<>());
+        ProductDto expectedProductDto = new ProductDto(product.getId(),product.getName(), product.getDescription(), product.getPrice(), product.getImageUrl(), new ArrayList<>());
         expectedProductDto.getSellerDto().add(new SellerDto(seller.getId(), seller.getName(), 10));
 
 

@@ -7,7 +7,8 @@ import {
     UNAUTH_USER,
     CATEGORY_LIST,
     ITEM_LIST,
-    SELLER_ORDERS
+    SELLER_ORDERS,
+    BUY_ITEM
 } from './types';
 
 const API_URL = '/api';
@@ -60,6 +61,14 @@ export function logoutUser() {
         dispatch({type: UNAUTH_USER});
         cookie.remove('token', {path: '/'});
         browserHistory.push('/');
+    }
+}
+
+export function buyItem(checkoutDetails) {
+    return function (dispatch) {
+        dispatch({type: BUY_ITEM,
+            payload: checkoutDetails});
+        browserHistory.push('/checkout');
     }
 }
 
