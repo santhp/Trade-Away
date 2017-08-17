@@ -44,6 +44,11 @@ public class OrderPlacementServiceImpl  implements  OrderPlacementService{
             productSellerQuantityMappingDao.save(productInfo);
             newOrder = orderRepo.save(newOrder);
             orderDto.setOrderId(newOrder.getId());
+
+            // set total order price
+            double totalOrderPrice = product.getPrice()*orderDto.getQty();
+            orderDto.setPrice(totalOrderPrice);
+            orderDto.setProductname(product.getName());
        }
 
         return orderDto;
