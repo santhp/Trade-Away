@@ -6,7 +6,8 @@ import {
     AUTH_ERROR,
     UNAUTH_USER,
     CATEGORY_LIST,
-    ITEM_LIST
+    ITEM_LIST,
+    SELLER_ORDERS
 } from './types';
 
 const API_URL = '/api';
@@ -83,6 +84,21 @@ export function getItemList(categoryId) {
             .then(response => {
                 dispatch({
                     type: ITEM_LIST,
+                    payload: response.data
+                });
+            })
+            .catch((error) => {
+                errorHandler(dispatch, error.response, AUTH_ERROR)
+            });
+    }
+}
+
+export function getOrders(sellerId) {
+    return function (dispatch) {
+        axios.get(`${API_URL}/seller/${sellerId}/orders`)
+            .then(response => {
+                dispatch({
+                    type: SELLER_ORDERS,
                     payload: response.data
                 });
             })
