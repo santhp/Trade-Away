@@ -1,78 +1,44 @@
 package com.tw.tradeaway.entities;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "Order_Details")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "Product_ID", nullable = false)
-    private int productID;
-    @Column(name = "User_ID", nullable = false)
-    private int userID;
+
+    @OneToOne
+    @JoinColumn(name = "Product_ID", referencedColumnName = "id")
+    private Product product;
+    @Column(name = "Buyer_ID", nullable = false)
+    private int buyerID;
+    @Column(name = "Seller_ID",nullable = false)
+    private int sellerID;
     @Column(name = "Quantity", nullable = false)
     private int quantity;
     @Column(name = "Delivery_Address", nullable = false)
     private String deliveryAddress;
 
-    public Order(int userID, int productID, int quantity, String deliveryAddress) {
-        this.productID = productID;
-        this.userID = userID;
+    @Column(name = "Status", nullable = false)
+    private String status;
+
+    public Order(Product product,int buyerID, int sellerID, int quantity, String deliveryAddress, String status) {
+        this.product=product;
+        this.buyerID = buyerID;
+        this.sellerID = sellerID;
         this.quantity = quantity;
         this.deliveryAddress = deliveryAddress;
+        this.status = status;
     }
 
-    public int getId() {
-        return id;
+    public Order() {
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public int getProductID() {
-        return productID;
-    }
-
-    public void setProductID(int productID) {
-        this.productID = productID;
-    }
-
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getDeliveryAddress() {
-        return deliveryAddress;
-    }
-
-    public void setDeliveryAddress(String deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", productID=" + productID +
-                ", userID=" + userID +
-                ", quantity=" + quantity +
-                ", deliveryAddress='" + deliveryAddress + '\'' +
-                '}';
-    }
 }

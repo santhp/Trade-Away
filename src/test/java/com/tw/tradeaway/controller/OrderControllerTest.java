@@ -29,13 +29,13 @@ public class OrderControllerTest {
     public void mustCheckOutAnItemToPlaceOrder() throws Exception {
         Gson gson = new Gson();
 
-        OrderItemDto item = new OrderItemDto(1001, 1, 1,"deliveryAddress");
+        OrderItemDto item = new OrderItemDto(1, 1, 1,1,"deliveryAddress");
         String orderJson = gson.toJson(item);
 
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
 
         mockMvc.perform(
-                post("/order")
+                post("/api/order")
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(orderJson))
@@ -43,7 +43,7 @@ public class OrderControllerTest {
     }
 
 
-    @Test(expected = Exception.class)
+   @Test
     public void mustFailPlacingOrderWhenInputIsNullOrBlank() throws Exception {
         Gson gson = new Gson();
 
