@@ -1,4 +1,4 @@
-package com.tw.tradeaway.controller;
+package com.tw.tradeaway;
 
 import com.tw.tradeaway.dao.*;
 import com.tw.tradeaway.entities.*;
