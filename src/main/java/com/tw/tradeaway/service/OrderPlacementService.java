@@ -5,5 +5,5 @@ import com.tw.tradeaway.dto.OrderItemDto;
 public interface OrderPlacementService {
 
 
-    public OrderItemDto createOrder(OrderItemDto orderInfo) ;
+    OrderItemDto createOrder(OrderItemDto orderInfo) ;
 }

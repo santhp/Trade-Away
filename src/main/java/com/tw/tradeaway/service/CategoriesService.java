@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface CategoriesService {
 
-    public List<Category> getListOfCategories();
+    List<Category> getListOfCategories();
 
-    public Collection<ProductDto> getListOfProducts(int categoryId);
+    Collection<ProductDto> getListOfProducts(int categoryId);
 
 
 }
