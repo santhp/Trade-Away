@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {browserHistory} from 'react-router';
+import {connect} from 'react-redux';
+
+import * as actions from '../actions';
 
 class OrderConfirmation extends Component {
 
@@ -7,16 +9,26 @@ class OrderConfirmation extends Component {
         super(props);
     }
 
+    redirectToDashboard(){
+        this.props.cancelCheckout();
+    }
+
     render() {
         return (
 
             <div>
                 <h3> Your Order is successfully placed and the seller would process the order shortly </h3>
-                <button class="btn btn-default">OK</button>
+                <button className="btn btn-default" onClick={this.redirectToDashboard.bind(this)}>OK</button>
 
             </div>
         );
     }
 }
 
-export default OrderConfirmation;
+
+function mapStateToProps(state) {
+    return {
+    };
+}
+
+export default connect(mapStateToProps, actions)(OrderConfirmation);

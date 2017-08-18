@@ -7,4 +7,5 @@ export const AUTH_USER = 'auth_user',
     ITEM_LIST = "item_list",
     SELLER_ORDERS = "seller_orders",
     CANCEL_CHECKOUT="cancel_checkout",
-    BUY_ITEM="buy_item";
+    BUY_ITEM="buy_item",
+    PLACE_ORDER="place_order";

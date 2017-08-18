@@ -10,10 +10,13 @@ class Checkout extends Component {
 
     onPlaceOrder(e) {
         var payload = {
-            "productId": this.state.productId,
-            "qty": this.state.qty,
-            "deliveryAddress": this.state.deliveryAddress
+            "buyerId":this.props.userId,
+            "sellerId":this.props.details.sellerId,
+            "productId": this.props.details.productId,
+            "qty": this.refs.qty.value,
+            "deliveryAddress": this.refs.address.value
         };
+        this.props.placeOrder(payload);
     }
 
     onCancelOrder(e) {
@@ -45,13 +48,13 @@ class Checkout extends Component {
                                 </div>
                                 <div className="row">
                                     <label className="col-sm-2 control-label">Quantity</label>
-                                    <select className="form-control" style={{width: 100}}
+                                    <select ref="qty" className="form-control" style={{width: 100}}
                                             onChange={(event) => this.setState({qty: event.target.value})}>{options}</select>
 
                                 </div>
                                 <div className="row" style={{paddingTop: 10}}>
                                     <label className="control-label col-sm-2">Delivery Address</label>
-                                    <textArea value={this.props.address} className="form-control" style={{width: 300}}
+                                    <textArea ref="address" value={this.props.address} className="form-control" style={{width: 300}}
                                               onChange={(event, newValue) => this.setState({deliveryAddress: newValue})}></textArea>
                                 </div>
                             </div>
@@ -76,7 +79,8 @@ class Checkout extends Component {
 
 function mapStateToProps(state) {
     return {
-        details: state.data.checkout_details
+        details: state.data.checkout_details,
+        userId: state.data.user.id,
     };
 }
 

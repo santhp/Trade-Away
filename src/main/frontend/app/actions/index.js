@@ -9,7 +9,8 @@ import {
     ITEM_LIST,
     SELLER_ORDERS,
     CANCEL_CHECKOUT,
-    BUY_ITEM
+    BUY_ITEM,
+    PLACE_ORDER
 } from './types';
 
 const API_URL = '/api';
@@ -125,3 +126,20 @@ export function getOrders(sellerId) {
             });
     }
 }
+
+export function placeOrder(checkoutDetails) {
+    return function (dispatch) {
+        axios.post(`${API_URL}/order`,checkoutDetails)
+            .then(response => {
+                dispatch({
+                    type: PLACE_ORDER,
+                    payload: response.data
+                });
+                browserHistory.push('/ordersuccess');
+            })
+            .catch((error) => {
+                errorHandler(dispatch, error.response, AUTH_ERROR)
+            });
+    }
+}
+

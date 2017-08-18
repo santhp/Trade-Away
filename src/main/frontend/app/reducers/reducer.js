@@ -6,7 +6,8 @@ import {
     ITEM_LIST,
     SELLER_ORDERS,
     CANCEL_CHECKOUT,
-    BUY_ITEM
+    BUY_ITEM,
+    PLACE_ORDER
 } from '../actions/types';
 
 const INITIAL_STATE = {error: '', message: '', content: '', authenticated: false}
@@ -38,6 +39,8 @@ export default function (state = INITIAL_STATE, action) {
             return {...state, checkout_details: action.payload};
         case CANCEL_CHECKOUT:
             return {...state, checkout_details:''};
+        case PLACE_ORDER:
+            return {...state, checkout_details:'', order_response:action.payload};
     }
 
     return state;
