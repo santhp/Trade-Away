@@ -30,7 +30,8 @@ public class OrderItemDto {
         this.deliveryAddress = deliveryAddress;
     }
 
-    public OrderItemDto(int buyerId, int sellerId, int productId, String productname, int qty, String deliveryAddress, int orderId, double price) {
+    public OrderItemDto(int buyerId, int sellerId, int productId, String productname, int qty,
+                        String deliveryAddress, int orderId, double price, String status) {
         this.buyerId = buyerId;
         this.sellerId = sellerId;
         this.productId = productId;
@@ -39,6 +40,7 @@ public class OrderItemDto {
         this.deliveryAddress = deliveryAddress;
         this.orderId = orderId;
         this.price = price;
+        this.status = status;
     }
 
     public void setOrderId(int orderId) {

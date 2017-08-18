@@ -43,6 +43,7 @@ class Orders extends Component {
                     <TableHeaderColumn dataField='orderId' isKey>Order Id</TableHeaderColumn>
                     <TableHeaderColumn dataField='productId'>Item Id</TableHeaderColumn>
                     <TableHeaderColumn dataField='productname'>Item Name</TableHeaderColumn>
+                    <TableHeaderColumn dataField='qty'>Quantity</TableHeaderColumn>
                     <TableHeaderColumn dataField='price'>Amount</TableHeaderColumn>
                     <TableHeaderColumn dataField='deliveryAddress'>Address</TableHeaderColumn>
                     <TableHeaderColumn dataField='status'>Status</TableHeaderColumn>

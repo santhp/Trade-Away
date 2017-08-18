@@ -29,7 +29,7 @@ public class SellerServiceImpl implements SellerService {
             OrderItemDto orderDto = new OrderItemDto(
                     order.getBuyerID(),order.getSellerID(),order.getProduct().getId(),
                     order.getProduct().getName(), order.getQuantity(),order.getDeliveryAddress(),
-                    order.getId(),order.getProduct().getPrice());
+                    order.getId(),order.getProduct().getPrice(),order.getStatus());
 
             orderItemDtos.add(orderDto);
         }
