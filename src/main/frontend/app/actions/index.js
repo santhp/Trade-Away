@@ -10,7 +10,8 @@ import {
     SELLER_ORDERS,
     CANCEL_CHECKOUT,
     BUY_ITEM,
-    PLACE_ORDER
+    PLACE_ORDER,
+    PLACE_ORDER_ERROR
 } from './types';
 
 const API_URL = '/api';
@@ -138,7 +139,7 @@ export function placeOrder(checkoutDetails) {
                 browserHistory.push('/ordersuccess');
             })
             .catch((error) => {
-                errorHandler(dispatch, error.response, AUTH_ERROR)
+                errorHandler(dispatch, error.response, PLACE_ORDER_ERROR)
             });
     }
 }

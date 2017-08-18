@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import NavbarContent from './navbar-content';
+import Alert from './alert';
 
 class App extends Component {
     render() {
@@ -15,6 +16,8 @@ class App extends Component {
                         <NavbarContent />
                     </div>
                 </nav>
+
+                <div><Alert /></div>
 
                 <div className="container">
                     {this.props.children}

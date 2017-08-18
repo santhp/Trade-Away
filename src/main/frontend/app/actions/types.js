@@ -8,4 +8,5 @@ export const AUTH_USER = 'auth_user',
     SELLER_ORDERS = "seller_orders",
     CANCEL_CHECKOUT="cancel_checkout",
     BUY_ITEM="buy_item",
-    PLACE_ORDER="place_order";
+    PLACE_ORDER="place_order",
+    PLACE_ORDER_ERROR="place_order_error";
