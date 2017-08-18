@@ -6,5 +6,5 @@ import java.util.Collection;
 
 public interface SellerService {
 
-    public Collection<OrderItemDto> getOrders(int sellerId);
+    Collection<OrderItemDto> getOrders(int sellerId);
 }
