@@ -39,9 +39,9 @@ export default function (state = INITIAL_STATE, action) {
         case BUY_ITEM:
             return {...state, checkout_details: action.payload};
         case CANCEL_CHECKOUT:
-            return {...state, checkout_details:''};
+            return {...state, checkout_details:'',global_alert:''};
         case PLACE_ORDER:
-            return {...state, checkout_details:'', order_response:action.payload, global_alert:"Success"};
+            return {...state, checkout_details:'', order_response:action.payload, global_alert:''};
         case PLACE_ORDER_ERROR:
             return {...state, checkout_details:'', order_response:'', global_alert:"Success"};
     }
