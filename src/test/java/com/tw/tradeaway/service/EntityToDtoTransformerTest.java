@@ -8,9 +8,11 @@ import com.tw.tradeaway.entities.ProductSellerQuantityMapping;
 import com.tw.tradeaway.entities.Seller;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class EntityToDtoTransformerTest {
 

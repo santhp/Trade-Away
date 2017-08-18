@@ -3,7 +3,6 @@ package com.tw.tradeaway.entities;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Arrays;
 
 
 @Data

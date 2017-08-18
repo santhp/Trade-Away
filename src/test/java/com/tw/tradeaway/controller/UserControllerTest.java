@@ -1,10 +1,5 @@
 package com.tw.tradeaway.controller;
 
-import com.google.gson.Gson;
-import com.tw.tradeaway.dto.OrderItemDto;
-import com.tw.tradeaway.dto.UserProfile;
-import com.tw.tradeaway.entities.Category;
-import com.tw.tradeaway.entities.User;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +16,6 @@ import org.springframework.web.context.WebApplicationContext;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

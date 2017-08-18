@@ -1,7 +1,6 @@
 package com.tw.tradeaway.controller;
 
 import com.tw.tradeaway.dto.ProductDto;
-import com.tw.tradeaway.dto.SellerDto;
 import com.tw.tradeaway.entities.Category;
 import com.tw.tradeaway.entities.Product;
 import com.tw.tradeaway.entities.ProductSellerQuantityMapping;
@@ -19,11 +18,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;

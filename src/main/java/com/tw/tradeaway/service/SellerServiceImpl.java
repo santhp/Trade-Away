@@ -3,7 +3,6 @@ package com.tw.tradeaway.service;
 import com.tw.tradeaway.dao.OrderDAO;
 import com.tw.tradeaway.dto.OrderItemDto;
 import com.tw.tradeaway.entities.Order;
-import com.tw.tradeaway.entities.Seller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

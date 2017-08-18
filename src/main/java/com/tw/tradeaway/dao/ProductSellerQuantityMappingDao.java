@@ -1,7 +1,5 @@
 package com.tw.tradeaway.dao;
 
-import com.tw.tradeaway.entities.Category;
-import com.tw.tradeaway.entities.Product;
 import com.tw.tradeaway.entities.ProductSellerQuantityMapping;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

@@ -1,11 +1,8 @@
 package com.tw.tradeaway.controller;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.tw.tradeaway.dto.OrderItemDto;
-import com.tw.tradeaway.dto.ProductDto;
-import com.tw.tradeaway.service.CategoriesService;
 import com.tw.tradeaway.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
